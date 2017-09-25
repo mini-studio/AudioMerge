@@ -25,13 +25,16 @@ public class Scanner {
         for (AudioFile af : audioFiles) {
             try {
                 mergeFile(af);
-                if (af.getMerge() != null) {
-                    System.out.println(af.getMerge());
-                    //需要对文件进行移除的动作，并添加到数据库
-                }
             }
             catch (Exception e) {
                 e.printStackTrace();
+            }
+        }
+        for (AudioFile af : audioFiles) {
+            if (af.getMerge() != null) {
+                //将源文件备份，插入数据库，移除源文件
+                //System.out.println(af.getMerge());
+                //需要对文件进行移除的动作，并添加到数据库
             }
         }
     }
