@@ -30,13 +30,8 @@ public class Scanner {
                 e.printStackTrace();
             }
         }
-        for (AudioFile af : audioFiles) {
-            if (af.getMerge() != null) {
-                //将源文件备份，插入数据库，移除源文件
-                //System.out.println(af.getMerge());
-                //需要对文件进行移除的动作，并添加到数据库
-            }
-        }
+        backupAndClear(audioFiles);
+
     }
 
     private List<AudioFile> scanSourceDirectory() {
@@ -122,6 +117,16 @@ public class Scanner {
         }
         else {
             audioFile.setMerge(null);
+        }
+    }
+
+    private void backupAndClear(List<AudioFile> audioFiles) {
+        for (AudioFile af : audioFiles) {
+            if (af.getMerge() != null) {
+                //将源文件备份，插入数据库，移除源文件
+                //System.out.println(af.getMerge());
+                //需要对文件进行移除的动作，并添加到数据库
+            }
         }
     }
 }
